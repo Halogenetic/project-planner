@@ -1,0 +1,206 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #0072ff;
+    color:  #0072ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100vw;
+    height: 100vh;
+}
+
+.window {
+    width: 92%;
+    height: 92%;
+    background-color: white;
+    box-shadow: 1px -1px 106px -11px rgba(0,198,255,0.95) inset;
+    -webkit-box-shadow: 1px -1px 106px -11px rgba(0,198,255,0.95) inset;
+    -moz-box-shadow: 1px -1px 106px -11px rgba(0,198,255,0.95) inset;
+}
+
+.box1 {
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 50px;
+}
+
+
+
+.fail {
+    background-color: red;
+    color: white;
+    font-size: 30px;
+    margin-left: 60vw;
+    display: none;
+}
+
+.box3 {
+    height: 9%;
+}
+
+.liste {
+    height: 75%;
+}
+
+.divisions {
+    display: flex;
+    flex-direction: row;
+    height: 5%;
+}
+
+.box4 {
+    height: 95%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    box-shadow: 1px -1px 106px -11px rgba(0,198,255,0.95);
+    -webkit-box-shadow: 1px -1px 106px -11px rgba(0,198,255,0.95);
+    -moz-box-shadow: 1px -1px 106px -11px rgba(0,198,255,0.95);
+}
+
+.tasksarray {
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.tasksnames {
+    width: 15%;
+    height: 100%;
+}
+.tasksdes{
+    width: 35%;
+    height: 100%;
+}
+.tasksdates {
+    width: 35%;
+    height: 100%;
+}
+.okayb {
+    width: 15%;
+    height: 100%;
+}
+.inputs {
+    display: flex;
+    flex-direction: row;
+}
+
+.input1 {
+    width: 100%;
+    font-size: 30px;
+}
+
+.input2 {
+    width: 100%;
+    font-size: 30px;
+}
+
+.input3 {
+    width: 100%;
+    font-size: 30px;
+}
+
+
+h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 30px;
+    border:  #0072ff 1px solid;
+    padding-left: 10px;
+    height: 50%;
+}
+
+.labok {
+    display: flex;
+    flex-direction: row;
+}
+.labelo {
+    width: 50%;
+    font-size: 30px;
+}
+
+.okb {
+    width: 50%;
+    font-size: 30px;
+}
+
+
+
+
+.part1 {
+    width: 15%;
+}
+.part2 {
+    width: 35%;
+}
+.part3 {
+    width: 20%;
+}
+.part5 {
+    width: 15%;
+}
+.part6 {
+    width: 15%;
+}
+
+h4 {
+    margin: 0;
+    padding: 0;
+    font-size: 30px;
+    border:  #0072ff 1px solid;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    list-style: none;
+    border:  #0072ff 1px solid;
+    padding-left: 10px;
+    font-size: 30px;
+    overflow: hidden;
+}
+
+
+h4.a {
+    width: 15%;
+}
+h4.z {
+    width: 35%;
+}
+h4.e {
+    width: 20%;
+}
+h4.r {
+    width: 15%;
+}
+h4.t {
+    width: 15%;
+}
+
+.labelo2 {
+    width: 50%;
+    font-size: 20px;
+    margin-left: -10px;
+}
+
+.okayy {
+    width: 50%;
+    font-size: 20px;
+    padding: 0;
+}
