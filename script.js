@@ -17,7 +17,20 @@ const uldate = document.querySelector('.ul3')
 const ulrt = document.querySelector('.ul5')
 const ullabel = document.querySelector('.ul6')
 
+  // Delete a task
 
+  const deleteTask = (e) => {
+    const dex = e.target.classList[1]
+
+    console.log(dex)
+    
+    const dexname = ('tasky'+[dex]+'');
+  
+    localStorage.removeItem(dexname);
+
+    displayrefresh();
+    
+    }
 
 
 
@@ -109,20 +122,30 @@ okaybutton.addEventListener('click', () => {
   newbutton.classList.add([i])
   newbutton.innerHTML='Ok'
 
+  const newcross = document.createElement("button")
+  newli5.appendChild(newcross)
+  newcross.classList.add('cross')
+  newcross.classList.add([i])
+  newcross.innerHTML='X'
+
   newbutton.addEventListener('click', refresh)
+  newcross.addEventListener('click', deleteTask)
 
   myfail.style.display = 'none'
 
   i++
+
+  console.log(i)
   }
 })
 
+
+// OK button function to refresh the localStorage item
 const refresh = (e) => {
 const dex = e.target.classList[1]
 
 const taskfind = localStorage.getItem('tasky'+[dex]+'');
 const taskfindtoobject = JSON.parse(taskfind);
-console.log(taskfindtoobject)
 
 const changingselect = document.querySelectorAll('.labelo2')
 changingselect.forEach(element => {
@@ -131,55 +154,96 @@ changingselect.forEach(element => {
   }
 
   localStorage.setItem('tasky'+[dex]+'', JSON.stringify(taskfindtoobject));
-  console.log(taskfindtoobject)
 }
 )
+}
+
+// Display all the tasks stored in the localStorage
+
+const displayrefresh = () => {
+const lsl = localStorage.length
+
+const deleteli = document.querySelectorAll('li')
+deleteli.forEach(element => {
+  element.remove()
+});
+
+for (r=0; r<lsl+1; r++) {
+  const taskdisplay = localStorage.getItem('tasky'+[r]+'');
+  const taskdisplaytoobject = JSON.parse(taskdisplay);
+
+
+  if (taskdisplaytoobject !== null) {
+
+  const newli = document.createElement("li")
+  newli.classList.add('namez')
+  newli.classList.add([r])
+  ulname.appendChild(newli)
+  newli.textContent = (taskdisplaytoobject.name)
+  const newli2 = document.createElement("li")
+  newli2.classList.add('desz')
+  newli2.classList.add([r])
+  uldes.appendChild(newli2)
+  newli2.textContent = (taskdisplaytoobject.des)
+  const newli3 = document.createElement("li")
+  newli3.classList.add('datez')
+  newli3.classList.add([r])
+  uldate.appendChild(newli3)
+  newli3.textContent = (taskdisplaytoobject.date)
+  const newli4 = document.createElement("li")
+  newli4.classList.add('rtz')
+  newli4.classList.add([r])
+  ulrt.appendChild(newli4)
+  newli4.textContent = (taskdisplaytoobject.rt)
+  const newli5 = document.createElement("li")
+  newli5.classList.add('labelz')
+  newli5.classList.add([r])
+  ullabel.appendChild(newli5)
+
+  const newselect = document.createElement("select")
+  newselect.classList.add('labelo2')
+  newselect.classList.add([r])
+  const option1 = document.createElement("option")
+  const option2 = document.createElement("option")
+  const option3 = document.createElement("option")
+  newselect.appendChild(option1)
+  newselect.appendChild(option2)
+  newselect.appendChild(option3)
+  option1.innerHTML='To Do'
+  option2.innerHTML='Doing'
+  option3.innerHTML='Done'
+  option1.value = 'To Do'
+  option2.value = 'Doing'
+  option3.value = 'Done'
+  
+    if (taskdisplaytoobject.label == 'To Do') {
+      option1.setAttribute('selected', 'selected')
+    } else if (taskdisplaytoobject.label == 'Doing') {
+      option2.setAttribute('selected', 'selected')
+    } else if (taskdisplaytoobject.label == 'Done') {
+      option3.setAttribute('selected', 'selected')
+    }
+
+  newli5.appendChild(newselect)
+
+  const newbutton = document.createElement("button")
+  newli5.appendChild(newbutton)
+  newbutton.classList.add('okayy')
+  newbutton.classList.add([r])
+  newbutton.innerHTML='Ok'
+
+  const newcross = document.createElement("button")
+  newli5.appendChild(newcross)
+  newcross.classList.add('cross')
+  newcross.classList.add([r])
+  newcross.innerHTML='X'
+
+  newbutton.addEventListener('click', refresh)
+  newcross.addEventListener('click', deleteTask)
 
 
 }
-  
+}
+}
 
-// const changingname = document.querySelectorAll('.namez')
-// changingname.forEach(element => {
-//   if (element.classList.contains(dex)){
-//     let thename = element
-//   }
-// }
-// )
-
-// const changingdes = document.querySelectorAll('.desz')
-// changingdes.forEach(element => {
-//   if (element.classList.contains(dex)){
-//     let thedes = element
-//   }
-// }
-// )
-
-// const changingdate = document.querySelectorAll('.datez')
-// changingdate.forEach(element => {
-//   if (element.classList.contains(dex)){
-//     let thedate = element
-//   }
-// }
-// )
-
-// const changingrt = document.querySelectorAll('.rtz')
-// changingrt.forEach(element => {
-//   if (element.classList.contains(dex)){
-//     let thert = element
-//   }
-// }
-// )
-
-// const changingselect = document.querySelectorAll('.labelo2')
-// changingselect.forEach(element => {
-//   if (element.classList.contains(dex)){
-//     let theselect = element
-//   }
-// }
-// )
-
-// const changingtask = {"name" : ""+thename+"", "des" : ""+thedes+"", "date" : ""+thedate+"", "rt" : ""+thert+"",  "label" : ""+theselect.value+""}
-// localStorage.setItem('tasky'+[dex]+'', JSON.stringify(changingtask));
-
-// console.log('tasky'+[dex]+'')
+displayrefresh();
