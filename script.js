@@ -20,8 +20,6 @@ const ullabel = document.querySelector('.ul6')
 
   const deleteTask = (e) => {
     const dex = e.target.classList[1]
-
-    console.log(dex)
     
     const dexname = ('tasky'+[dex]+'');
   
@@ -142,11 +140,10 @@ okaybutton.addEventListener('click', () => {
   newbutton.addEventListener('click', refresh)
   newcross.addEventListener('click', deleteTask)
 
-  // i++
+  displayrefresh();
 
   break
 
-  console.log(i)
   }}}
 })
 
@@ -172,19 +169,17 @@ changingselect.forEach(element => {
 // Display all the tasks stored in the localStorage
 
 const displayrefresh = () => {
-const lsl = localStorage.length
 
 const deleteli = document.querySelectorAll('li')
 deleteli.forEach(element => {
   element.remove()
 });
 
-for (r=0; r<lsl+1; r++) {
+for (r=0; r<100; r++) {
   const taskdisplay = localStorage.getItem('tasky'+[r]+'');
   if (taskdisplay == null) {
-    console.log('ok')
+
   } else {
-    console.log('yo')
 
   const taskdisplaytoobject = JSON.parse(taskdisplay);
 
@@ -263,3 +258,5 @@ for (r=0; r<lsl+1; r++) {
 }
 
 displayrefresh();
+
+
