@@ -35,15 +35,6 @@ h1 {
 }
 
 
-
-.fail {
-    background-color: red;
-    color: white;
-    font-size: 30px;
-    margin-left: 60vw;
-    display: none;
-}
-
 .box3 {
     height: 9%;
 }

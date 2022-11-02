@@ -7,9 +7,8 @@ const input4 = document.querySelector('.input4')
 const okaybutton = document.querySelector('.okb')
 const myh3 = document.querySelectorAll('.h3')
 const myselect = document.querySelector(".labelo")
-const myfail = document.querySelector(".fail")
 
-var i = 0
+// var i = 0
 
 const ulname = document.querySelector('.ul1')
 const uldes = document.querySelector('.ul2')
@@ -57,11 +56,23 @@ okaybutton.addEventListener('click', () => {
   
   // Create A New Task
   const newtask = {"name" : ""+input1.value+"", "des" : ""+input2.value+"", "date" : ""+deadlinestring+"", "rt" : ""+reti+"",  "label" : ""+myselect.value+""}
-  localStorage.setItem('tasky'+[i]+'', JSON.stringify(newtask));
 
   if (input1.value == '' || input2.value == '') {
-    myfail.style.display = 'block'
+    okaybutton.style.backgroundColor = 'rgb(255, 85, 85)'
+
+
   } else {
+
+    for (let i=0; i<100; i++) {
+      let verify = localStorage.getItem('tasky'+[i]+'')
+
+      if (verify == null) {
+      
+    localStorage.setItem('tasky'+[i]+'', JSON.stringify(newtask));
+
+
+    okaybutton.style.backgroundColor = 'rgb(38, 229, 38)'
+
 
   const task1 = localStorage.getItem('tasky'+[i]+'');
   const newobject = JSON.parse(task1);
@@ -131,12 +142,12 @@ okaybutton.addEventListener('click', () => {
   newbutton.addEventListener('click', refresh)
   newcross.addEventListener('click', deleteTask)
 
-  myfail.style.display = 'none'
+  // i++
 
-  i++
+  break
 
   console.log(i)
-  }
+  }}}
 })
 
 
@@ -170,6 +181,11 @@ deleteli.forEach(element => {
 
 for (r=0; r<lsl+1; r++) {
   const taskdisplay = localStorage.getItem('tasky'+[r]+'');
+  if (taskdisplay == null) {
+    console.log('ok')
+  } else {
+    console.log('yo')
+
   const taskdisplaytoobject = JSON.parse(taskdisplay);
 
 
@@ -241,7 +257,7 @@ for (r=0; r<lsl+1; r++) {
   newbutton.addEventListener('click', refresh)
   newcross.addEventListener('click', deleteTask)
 
-
+  }
 }
 }
 }
