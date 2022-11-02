@@ -291,32 +291,32 @@ rtbut.addEventListener('click', () => {
     }
   }
 
-  // let o = 0;
-  const arl = newArray.length
+ let arl = newArray.length
 
 
   for (let y=50; y<100; y++) {
     let check2 = localStorage.getItem('tasky'+[y]+'')
 
     if (check2 !== null) {
-      const rtest = JSON.parse(check2);
+      let rtest = JSON.parse(check2);
 
 
 
 
-      for (p=0; p<arl-1; p++) {
+      for (p=0; p<arl; p++) {
       if (rtest.rem == newArray[p]) {
-        console.log('yes')
-        console.log(rtest.rem)
-        console.log(newArray[p])
-        // localStorage.setItem('tasky'+[o]+'', check2);
+
+        localStorage.setItem('tasky'+[p]+'', check2);
 
 
-        // localStorage.removeItem('tasky'+[y]+'');
+        localStorage.removeItem('tasky'+[y]+'');
 
-      } else {console.log('no')      
-      console.log(rtest.rem)
-      console.log(newArray[0])}
+        displayrefresh();
+
+
+        break
+
+    }
     }
   }
   }
@@ -325,56 +325,71 @@ rtbut.addEventListener('click', () => {
 )
 
 
+// Sort by name
+const namebut = document.querySelector('.namebut')
+
+  let d = 50
+  
+  const nameArray = []
+  
+  namebut.addEventListener('click', () => {  
+    for (let i=0; i<50; i++) {
+      let check = localStorage.getItem('tasky'+[i]+'')
+  
+      if (check !== null) {
+        const rtest = JSON.parse(check);
+  
+        localStorage.setItem('tasky'+[d]+'', check);
+  
+        localStorage.removeItem('tasky'+[i]+'');
+  
+        let check2= localStorage.getItem('tasky'+[d]+'')
+  
+        const rtest2 = JSON.parse(check2);
+  
+        nameArray.push(rtest2.name)
+  
+        nameArray.sort(function(a, b){return a-b});
+
+  
+        d++
+      }
+    }
+  
+   let arle = nameArray.length
+  
+  
+    for (let y=50; y<100; y++) {
+      let check2 = localStorage.getItem('tasky'+[y]+'')
+  
+      if (check2 !== null) {
+        let rtest = JSON.parse(check2);
+  
+        console.log(rtest.name)
+  
+  
+        for (p=0; p<arle; p++) {
+        if (rtest.name == nameArray[p]) {
+  
+          localStorage.setItem('tasky'+[p]+'', check2);
+  
+  
+          localStorage.removeItem('tasky'+[y]+'');
+  
+          displayrefresh();
+  
+  
+          break
+  
+      }
+      }
+    }
+    }
+  }
+  
+  )
 
 
 
 
 
-
-
-
-
-
-
-
-// let a = 0;
-
-//   for (let c=50; c<100; c++) {
-//     let sort = localStorage.getItem('tasky'+[c]+'')
-//     if (sort !== null) {
-//     const sortest = JSON.parse(sort);
-
-//     for (h=50; h<100; h++){
-//       let sorth = localStorage.getItem('tasky'+[h]+'')
-//       if (sorth !== null) {
-//       const sortesth = JSON.parse(sorth);
-//       if (sortest.rem<sortesth.rem && sortest !== sortesth) {
-//         localStorage.setItem('tasky'+[a]+'', sort);
-//         localStorage.removeItem('tasky'+[c]+'');
-//         a++
-
-//       }
-//     }
-
-
-  //   }
-  //   }
-
-    
-
-
-
-
-
-  // }
-
-
-
-
-
-
-// points.sort(function(a, b){return a-b});
-
-
-      // const rtest = JSON.parse(verify);
-      // console.log(rtest.rt)
