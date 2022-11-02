@@ -179,11 +179,23 @@ h4.e {
     width: 25%;
 }
 h4.r {
-    width: 15%;
+    width: 10%;
 }
+
+.rtbut {
+    width: 5%;
+    font-size: 20px;
+}
+
 h4.t {
-    width: 15%;
+    width: 10%;
 }
+
+.labbut {
+    width: 5%;
+    font-size: 20px;
+}
+
 
 .labelo2 {
     width: 50%;

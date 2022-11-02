@@ -53,7 +53,7 @@ okaybutton.addEventListener('click', () => {
   const reti = (msToTime(remaining));
   
   // Create A New Task
-  const newtask = {"name" : ""+input1.value+"", "des" : ""+input2.value+"", "date" : ""+deadlinestring+"", "rt" : ""+reti+"",  "label" : ""+myselect.value+""}
+  const newtask = {"name" : ""+input1.value+"", "des" : ""+input2.value+"", "date" : ""+deadlinestring+"", "rt" : ""+reti+"",  "label" : ""+myselect.value+"",  "rem" : ""+remaining+""}
 
   if (input1.value == '' || input2.value == '') {
     okaybutton.style.backgroundColor = 'rgb(255, 85, 85)'
@@ -260,3 +260,121 @@ for (r=0; r<100; r++) {
 displayrefresh();
 
 
+// Sort by remaining time
+
+const rtbut = document.querySelector('.rtbut')
+let t = 50
+
+const newArray = []
+
+rtbut.addEventListener('click', () => {
+
+  for (let i=0; i<50; i++) {
+    let check = localStorage.getItem('tasky'+[i]+'')
+
+    if (check !== null) {
+      const rtest = JSON.parse(check);
+
+      localStorage.setItem('tasky'+[t]+'', check);
+
+      localStorage.removeItem('tasky'+[i]+'');
+
+      let check2= localStorage.getItem('tasky'+[t]+'')
+
+      const rtest2 = JSON.parse(check2);
+
+      newArray.push(rtest2.rem)
+
+      newArray.sort(function(a, b){return a-b});
+
+      t++
+    }
+  }
+
+  // let o = 0;
+  const arl = newArray.length
+
+
+  for (let y=50; y<100; y++) {
+    let check2 = localStorage.getItem('tasky'+[y]+'')
+
+    if (check2 !== null) {
+      const rtest = JSON.parse(check2);
+
+
+
+
+      for (p=0; p<arl-1; p++) {
+      if (rtest.rem == newArray[p]) {
+        console.log('yes')
+        console.log(rtest.rem)
+        console.log(newArray[p])
+        // localStorage.setItem('tasky'+[o]+'', check2);
+
+
+        // localStorage.removeItem('tasky'+[y]+'');
+
+      } else {console.log('no')      
+      console.log(rtest.rem)
+      console.log(newArray[0])}
+    }
+  }
+  }
+}
+
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// let a = 0;
+
+//   for (let c=50; c<100; c++) {
+//     let sort = localStorage.getItem('tasky'+[c]+'')
+//     if (sort !== null) {
+//     const sortest = JSON.parse(sort);
+
+//     for (h=50; h<100; h++){
+//       let sorth = localStorage.getItem('tasky'+[h]+'')
+//       if (sorth !== null) {
+//       const sortesth = JSON.parse(sorth);
+//       if (sortest.rem<sortesth.rem && sortest !== sortesth) {
+//         localStorage.setItem('tasky'+[a]+'', sort);
+//         localStorage.removeItem('tasky'+[c]+'');
+//         a++
+
+//       }
+//     }
+
+
+  //   }
+  //   }
+
+    
+
+
+
+
+
+  // }
+
+
+
+
+
+
+// points.sort(function(a, b){return a-b});
+
+
+      // const rtest = JSON.parse(verify);
+      // console.log(rtest.rt)
