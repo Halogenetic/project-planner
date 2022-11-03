@@ -389,11 +389,83 @@ const namebut = document.querySelector('.namebut')
       }
     }
     }
+
+    
   }
   
   )
 
 
 // Filter by To Do
+const labbut = document.querySelector('.labbut')
+
+  let g = 50
+  
+  let labArray = []
+  
+  labbut.addEventListener('click', () => {  
+    for (let i=0; i<50; i++) {
+      let check = localStorage.getItem('tasky'+[i]+'')
+  
+      if (check !== null) {
+        const rtest = JSON.parse(check);
+  
+        localStorage.setItem('tasky'+[g]+'', check);
+  
+        localStorage.removeItem('tasky'+[i]+'');
+  
+        let check2= localStorage.getItem('tasky'+[g]+'')
+  
+        const rtest2 = JSON.parse(check2);
+  
+        labArray.push(rtest2.label)
+      
+        g++
+      }
+    }
+
+// console.log(labArray)
+  //   nameArray.sort(function (a, b) {
+  //     if (a < b) {
+  //       return -1;
+  //     }
+  //     if (a > b) {
+  //       return 1;
+  //     }
+  //     return 0;
+  //   });
 
 
+  
+  //  let arle = nameArray.length
+
+  let p = 0
+  
+  
+    for (let y=50; y<100; y++) {
+      let check2 = localStorage.getItem('tasky'+[y]+'')
+  
+      if (check2 !== null) {
+        let rtest = JSON.parse(check2);
+
+        if (rtest.label == 'To Do') {
+  
+          localStorage.setItem('tasky'+[p]+'', check2);
+          console.log('ok')
+
+  
+          localStorage.removeItem('tasky'+[y]+'');
+
+          p++
+
+        } else {
+
+          console.log('no')  
+        }
+  
+          displayrefresh();
+      }
+    }
+    }
+  
+  )
