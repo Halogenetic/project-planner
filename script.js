@@ -437,7 +437,7 @@ const labbut = document.querySelector('.labbut')
 
 
   
-  //  let arle = nameArray.length
+   let labl = labArray.length
 
   let p = 0
   
@@ -460,7 +460,13 @@ const labbut = document.querySelector('.labbut')
 
         } else {
 
-          console.log('no')  
+          localStorage.setItem('tasky'+[p+labl]+'', check2);
+          console.log('no')
+
+  
+          localStorage.removeItem('tasky'+[y]+'');
+
+          p++
         }
   
           displayrefresh();
