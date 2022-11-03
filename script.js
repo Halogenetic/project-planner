@@ -8,8 +8,6 @@ const okaybutton = document.querySelector('.okb')
 const myh3 = document.querySelectorAll('.h3')
 const myselect = document.querySelector(".labelo")
 
-// var i = 0
-
 const ulname = document.querySelector('.ul1')
 const uldes = document.querySelector('.ul2')
 const uldate = document.querySelector('.ul3')
@@ -330,7 +328,7 @@ const namebut = document.querySelector('.namebut')
 
   let d = 50
   
-  const nameArray = []
+  let nameArray = []
   
   namebut.addEventListener('click', () => {  
     for (let i=0; i<50; i++) {
@@ -348,13 +346,22 @@ const namebut = document.querySelector('.namebut')
         const rtest2 = JSON.parse(check2);
   
         nameArray.push(rtest2.name)
-  
-        nameArray.sort(function(a, b){return a-b});
-
-  
+      
         d++
       }
     }
+
+    nameArray.sort(function (a, b) {
+      if (a < b) {
+        return -1;
+      }
+      if (a > b) {
+        return 1;
+      }
+      return 0;
+    });
+
+
   
    let arle = nameArray.length
   
@@ -364,9 +371,6 @@ const namebut = document.querySelector('.namebut')
   
       if (check2 !== null) {
         let rtest = JSON.parse(check2);
-  
-        console.log(rtest.name)
-  
   
         for (p=0; p<arle; p++) {
         if (rtest.name == nameArray[p]) {
@@ -390,6 +394,6 @@ const namebut = document.querySelector('.namebut')
   )
 
 
-
+// Filter by To Do
 
 
